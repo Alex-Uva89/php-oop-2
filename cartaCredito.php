@@ -33,10 +33,10 @@ Class CartaCredito {
         return $this->banca;
     }
     
-    public function setScadenza($_scadenza) {
-        $now = date('d/m/Y');
-        if( $_scadenza < $now ){
-             $this->scadenza = 'la carta è valida';
+    public function setScadenza($scadenza) {
+        $now = date('Y/m/d');
+        if( $scadenza >= $now ){
+            $this->scadenza = 'la carta è valida';
         } else {
             $this->scadenza = 'la carta è scaduta';
         }
@@ -66,7 +66,7 @@ Class CartaCredito {
     }
 }
 
-$cartaUva= new CartaCredito('1234567891234567', 'Nome Banca', '2023-09-01', 'Ale Uva', '123');
-$cartaUva->setScadenza('01/09/2023');
+$cartaUva= new CartaCredito('1234567891234567', 'Che Banca', '0000-00-00' , 'Ale Uva', '123');
+$cartaUva->setScadenza('2023-01-01');
 
 var_dump ($cartaUva);
