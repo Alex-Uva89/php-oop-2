@@ -1,13 +1,13 @@
 <?php
-include __DIR__ . '/prodottoGenerico.php';
+include_once __DIR__ . '/prodottoGenerico.php';
 
 class Cibo extends ProdottoGenerico 
 {
-    private $peso;
-    private $tipo;
+    protected $peso;
+    protected $tipo;
     
-    function __construct(string $_nome, float $_prezzo, string $_img, float $_peso, string $_tipo){
-        parent::__construct($_nome, $_prezzo, $_img);
+    public function __construct(string $barcode, string $nome, float $prezzo, string $immagine, float $_peso, string $_tipo){
+        parent::__construct($barcode, $nome, $prezzo, $immagine);
         $this->peso = $_peso;
         $this->tipo = $_tipo;
     }
@@ -31,7 +31,6 @@ class Cibo extends ProdottoGenerico
     }
 }
 
-$Shezir= new Cibo ("Shezir", 12.60, "https://picsum.photos/200", 3.50, "umido per gatti");
-// var_dump($croccantini);
+
 
 ?>

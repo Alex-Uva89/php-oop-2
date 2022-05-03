@@ -1,12 +1,12 @@
 <?php
-
-include __DIR__ . '/utenteStandard.php';
+include_once __DIR__ . '/utenteStandard.php';
 
 class UtenteRegistrato extends UtenteStandard
 {
-    private $mail;
-    private $usarname;
-    private $password;
+    protected $mail;
+    protected $usarname;
+    protected $password;
+    protected $discount = 20;
 
     public function __construct($_utenteId, $_utenteNome, $_utenteCognome, $_utenteIndirizzo, $_mail, $_usarname, $_password){
         parent::__construct($_utenteId, $_utenteNome, $_utenteCognome, $_utenteIndirizzo);
@@ -44,6 +44,3 @@ class UtenteRegistrato extends UtenteStandard
 
 }
 
-$utente2 = new UtenteRegistrato(2, "Alessandro", "Uva", "Via Università, 51", "mario.rossi@hotmail.it", "Zuccherino89", "0000");
-$utente2->setCarta("1234567891234567","un altra banca","20 September 2024","Mario Rossi",456);
-var_dump($utente2);

@@ -1,13 +1,15 @@
 <?php
-include __DIR__ . '/cartaCredito.php';
+include_once __DIR__ . './cartaCredito.php';
+include_once __DIR__ . './carrelloUser.php';
 
-class UtenteStandard
-{
+class UtenteStandard{
+
     protected $utenteId;
     protected $utenteNome;
     protected $utenteCognome;
     protected $utenteIndirizzo;
     protected $utenteMetodoPagamento= []; 
+    protected $discount = 0;
 
     public function __construct($_utenteId, $_utenteNome, $_utenteCognome, $_utenteIndirizzo){
         $this->utenteId = $_utenteId;
@@ -52,14 +54,18 @@ class UtenteStandard
         return $this->utenteIndirizzo;
     }
 
-    function setCarta($_numero, $_banca, $_scadenza, $_proprietario, $_cvc){
-        array_push($this->utenteMetodoPagamento, 
-        new CartaCredito($_numero, $_banca, $_scadenza, $_proprietario, $_cvc));
+    public function setCarta($_numero, $_banca, $_scadenza, $_proprietario, $_cvc){
+        array_push($this->utenteMetodoPagamento, new CartaCredito($_numero, $_banca, $_scadenza, $_proprietario, $_cvc));
+        return $this;
     }
 
-
+    // public function placeOrder(CartaCredito $cartaCredito , $listaProdotti){
+        
+        
+    //     return $order;
+    // }
 }
 
-$utente1 = new UtenteStandard(1, "Mario", "Rossi", "Via le mani di qua, 1");
-$utente1->setCarta("1234567891234567","banca","2024-09-01","Mario Rossi",456);
-//var_dump($utente1);
+?>
+
+
